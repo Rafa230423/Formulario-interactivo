@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Vista armada por secciones</title>
+<style>
+  :root{
+    /* Tamaño del formulario (con límites para responsive) */
+    --form-w: 647px;
+    --form-h: 638px;
+  }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: #0b1830;
+  }
+
+  /* Layout general: header arriba, footer abajo, izquierda fija, contenido a la derecha */
+ .layout{
+  height: 100vh;
+  display: grid;
+  grid-template-columns: auto 1fr;     /* left | right */
+  grid-template-rows: auto 1fr auto;   /* fila 1: sidebar+header | fila 2: sidebar+main | fila 3: footer */
+  grid-template-areas:
+    "sidebar header"
+    "sidebar main"
+    "footer  footer";
+}
+  /* Header (imagen completa, sin deformar) */
+  header {
+    grid-area: header;
+    background: #0b1830;
+  }
+  .header-img {
+    display: block;
+    width: 100%;
+    height: auto;          /* mantiene proporción */
+  }
+
+  /* Sidebar izquierdo (imagen a lo alto del viewport) */
+  aside {
+    grid-area: sidebar;
+    background: #0b1830;
+    overflow: hidden;
+    display: flex;
+  }
+  .left-img {
+    height: 100%;
+    width: auto;           /* mantiene proporción */
+    object-fit: contain;   /* no deforma */
+    display: block;
+  }
+
+  /* Contenido principal con la imagen amarillo/azul como fondo */
+  main {
+    grid-area: main;
+    position: relative;
+    overflow: auto;        /* si el form necesita scroll externo */
+    background: #eef3fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Contenedor de la imagen de contenido: mantiene proporción y sirve de referencia para el form */
+  .content-frame {
+    position: relative;
+    width: min(1100px, 92%);   /* ajusta el ancho máximo del “lienzo” */
+    /* Si conoces la proporción exacta de content.png, ponla aquí: */
+    aspect-ratio: 1200 / 900;  /* cámbialo a la proporción real de tu content.png */
+    background: url("img/content.png") no-repeat center center;
+    background-size: contain;  /* imagen completa, sin deformar */
+    background-color: #eef3fa; /* color de relleno si sobra */
+  }
+
+  /* Slot del formulario: centrado dentro del contenido amarillo/azul */
+  .form-slot {
+    position: absolute;
+    /* Si el form debe ir centrado, deja así: */
+    inset: 0;
+    display: grid;
+    place-items: center;
+
+    /* Si luego quieres ubicarlo en otra zona específica del content.png,
+       reemplaza lo de arriba por coordenadas en %:
+       left: 36%; top: 18%; width: 30%; height: 65%;
+       y quita 'inset: 0' y 'place-items: center'. */
+  }
+
+  .form {
+    width: min(var(--form-w), 95%);   /* no excede el content-frame */
+    height: min(var(--form-h), 95%);
+    background: rgba(255,255,255,.97);
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0,0,0,.25);
+    padding: 20px;
+    overflow: auto;                   /* scroll interno si hace falta */
+  }
+
+  .form h2 { margin: 0 0 12px; text-align: center; }
+  .form input, .form button {
+    width: 100%; padding: 10px; margin: 8px 0;
+    border-radius: 8px; border: 1px solid #d6d6d6; box-sizing: border-box;
+  }
+  .form button { background:#1677ff; color:#fff; border:none; cursor:pointer; }
+  .form button:hover { filter: brightness(.95); }
+
+  /* Footer */
+  footer {
+    grid-area: footer;
+    background: #0b1830;
+  }
+  .footer-img {
+    display: block;
+    width: 100%;
+    height: auto;          /* mantiene proporción */
+  }
+
+  /* Responsivo extra en móviles muy pequeños */
+  @media (max-width: 900px) {
+    .layout {
+      grid-template-columns: 1fr;         /* apilar sidebar abajo del header */
+      grid-template-areas:
+        "header"
+        "main"
+        "footer";
+    }
+    aside { display: none; }               /* oculta lateral si no cabe */
+  }
+</style>
+</head>
+<body>
+  <div class="layout">
+    <header>
+      <img class="header-img" src="img/top.png" alt="Top" />
+    </header>
+
+    <aside>
+      <img class="left-img" src="img/left.png" alt="Lateral izquierdo" />
+    </aside>
+
+    <main>
+      <div class="content-frame">
+        <div class="form-slot">
+          <div class="form">
+            <h2>Formulario</h2>
+            <input type="text" placeholder="Nombre" />
+            <input type="email" placeholder="Correo" />
+            <button type="button">Enviar</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <img class="footer-img" src="img/footer.png" alt="Footer" />
+    </footer>
+  </div>
+</body>
+</html>
+
