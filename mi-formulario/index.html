@@ -145,12 +145,86 @@
     <main>
       <div class="content-frame">
         <div class="form-slot">
-          <div class="form">
-            <h2>Formulario</h2>
-            <input type="text" placeholder="Nombre" />
-            <input type="email" placeholder="Correo" />
-            <button type="button">Enviar</button>
-          </div>
+        <div class="form">
+  <h2>Solicitud de Comunicación Digital</h2>
+  <form>
+    <label>Nombre y cargo del solicitante:</label>
+    <input type="text" name="nombre" placeholder="Escriba su nombre y cargo" />
+
+    <label>Correo y extensión:</label>
+    <input type="email" name="correo" placeholder="Ejemplo@dominio.com" />
+
+    <label>Dirección:</label>
+    <input type="text" name="direccion" />
+
+    <label>Departamento:</label>
+    <input type="text" name="departamento" />
+
+    <h3>Tipo de solicitud:</h3>
+    <label><input type="checkbox" name="tipo[]" value="campaña"> Campaña en redes sociales</label><br>
+    <label><input type="checkbox" name="tipo[]" value="publicacion"> Publicación en redes sociales</label><br>
+    <label><input type="checkbox" name="tipo[]" value="otro"> Otro</label><br>
+
+    <h3>Objetivo de la solicitud:</h3>
+    <textarea name="objetivo" rows="3"></textarea>
+
+    <h3>Público objetivo:</h3>
+    <label><input type="checkbox" name="publico[]" value="ciudadanos"> Ciudadanos en general</label><br>
+    <label><input type="checkbox" name="publico[]" value="instituciones"> Instituciones</label><br>
+    <label><input type="checkbox" name="publico[]" value="privado"> Sector privado</label><br>
+    <label><input type="checkbox" name="publico[]" value="jovenes"> Jóvenes (secundaria, bachiller, universitarios)</label><br>
+    <label><input type="checkbox" name="publico[]" value="envejecientes"> Envejecientes</label><br>
+
+    <h3>Mensaje a posicionar:</h3>
+    <textarea name="mensaje" rows="3"></textarea>
+
+    <h3>Impacto esperado:</h3>
+    <textarea name="impacto" rows="3"></textarea>
+
+    <h3>Canales digitales de publicación:</h3>
+    <label><input type="checkbox" name="canales[]" value="instagram"> Instagram</label>
+    <label><input type="checkbox" name="canales[]" value="facebook"> Facebook</label>
+    <label><input type="checkbox" name="canales[]" value="tiktok"> TikTok</label>
+    <label><input type="checkbox" name="canales[]" value="linkedin"> LinkedIn</label>
+    <label><input type="checkbox" name="canales[]" value="twitter"> X/Twitter</label>
+    <label><input type="checkbox" name="canales[]" value="youtube"> YouTube</label>
+    <label><input type="checkbox" name="canales[]" value="web"> Portal Web</label><br><br>
+
+    <h2>Producción Audiovisual</h2>
+
+    <h3>Tipo de producción requerida:</h3>
+    <label><input type="checkbox" name="produccion[]" value="institucional"> Video institucional</label><br>
+    <label><input type="checkbox" name="produccion[]" value="evento"> Cobertura de evento</label><br>
+    <label><input type="checkbox" name="produccion[]" value="reel"> Reel dinámico</label><br>
+    <label><input type="checkbox" name="produccion[]" value="testimonio"> Testimonio/entrevista</label><br>
+    <label><input type="checkbox" name="produccion[]" value="animacion"> Animación</label><br>
+    <label><input type="checkbox" name="produccion[]" value="fotografia"> Fotografía institucional</label><br>
+
+    <h3>Objetivo del material:</h3>
+    <label><input type="checkbox" name="objetivoMaterial[]" value="informar"> Informar</label>
+    <label><input type="checkbox" name="objetivoMaterial[]" value="sensibilizar"> Sensibilizar</label>
+    <label><input type="checkbox" name="objetivoMaterial[]" value="promocionar"> Promocionar</label>
+    <label><input type="checkbox" name="objetivoMaterial[]" value="capacitar"> Capacitar</label><br><br>
+
+    <h3>Idea principal o guion:</h3>
+    <textarea name="guion" rows="3"></textarea>
+
+    <h3>Detalles del contenido:</h3>
+    <label>Duración estimada:</label>
+    <input type="text" name="duracion" placeholder="Ej: 30s, 1min" /><br>
+    <label>Formato requerido:</label>
+    <input type="text" name="formato" placeholder="Horizontal, vertical, 4K..." /><br>
+
+    <h3>Logística de producción:</h3>
+    <label>Fecha estimada de grabación:</label>
+    <input type="date" name="fecha" /><br>
+    <label>Lugar de grabación:</label>
+    <input type="text" name="lugar" /><br>
+
+    <button type="submit">Enviar solicitud</button>
+  </form>
+</div>
+
         </div>
       </div>
     </main>
